@@ -699,6 +699,10 @@ video {
   margin-top: 10rem;
 }
 
+.ms-auto{
+  margin-inline-start: auto;
+}
+
 .flex{
   display: flex;
 }
@@ -761,6 +765,10 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-\[960px\]{
+  width: 960px;
 }
 
 .transform{
@@ -921,6 +929,14 @@ video {
 
 .p-4{
   padding: 1rem;
+}
+
+.p-5{
+  padding: 1.25rem;
+}
+
+.p-10{
+  padding: 2.5rem;
 }
 
 .px-10{
