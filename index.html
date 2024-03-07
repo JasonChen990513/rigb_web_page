@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <style>
     body{
         /* width: 1920px;
@@ -17,10 +18,20 @@
         
         transform: translate(-50%, -50%);
     }
+    .p10 {
+        padding: 40px;
+    }
+
+    .swiper-button-next{
+        right: 0;
+    }
+    .swiper-button-prev{
+        left: 0;
+    }
   </style>
 </head>
-<body class="font-Nunito mx-20 items-center">
-    <nav class="flex justify-between m-10">
+<body class="font-Nunito items-center">
+    <nav class="flex justify-between my-10 mx-32">
         <div class="px-4 cursor-pointer justify-start" id="burger">
             <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </div>
@@ -208,8 +219,210 @@
             </div>
             
         </div>
-
-
+        <div class="border-4 border-bluebtn rounded-verylarge mt-20 flex flex-row p-4 justify-center">
+            <div class="basis-1/3 p-4">
+                <div class="text-bluebtn text-xl font-bold">Pre-Sale Details</div>
+                <div class="text-lg">480,000,000 ROYAL tokens will be sold during the pre-sale</div>
+            </div>
+            <div class="basis-1/3 p-4  border-l-[1px] border-r-[1px] border-black">
+                <div class="text-bluebtn text-xl font-bold">Current Stage Price</div>
+                <div class="text-lg">tristique senectus</div>
+            </div>
+            <div class="basis-1/3 p-4">
+                <div class="text-bluebtn text-xl font-bold">Exchange Listing Price</div>
+                <div class="text-lg">tristique senectus</div>
+            </div>
+        </div>
     </main>
+    <div class="bg-[#FAFAFA] pb-20 pt-32 py-16 mt-40 relative flex-col justify-center z-20">
+        <div class="w-[1080px] flex-col justify-center mx-auto">
+            <!-- Slider main container -->
+            <div class="swiper h-fit p10 contant">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="rounded-2xl p-10 bg-white shadow-md">
+                        <div class="text-bluebtn text-xl font-bold ">2023</div>
+                        <div class="text-bluebtn text-xl font-bold">Phase 1</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl p-10 bg-white shadow-md">
+                        <div class="text-bluebtn text-xl font-bold">2024</div>
+                        <div class="text-bluebtn text-xl font-bold">Phase 2</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl p-10 bg-white shadow-md">
+                        <div class="text-bluebtn text-xl font-bold">2025</div>
+                        <div class="text-bluebtn text-xl font-bold">Phase 3</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl p-10 bg-white shadow-md">
+                        <div class="text-bluebtn text-xl font-bold">2026</div>
+                        <div class="text-bluebtn text-xl font-bold">Phase 4</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl p-10 bg-white shadow-md">
+                        <div class="text-bluebtn text-xl font-bold">2027</div>
+                        <div class="text-bluebtn text-xl font-bold">Phase 5</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,<br><br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="left-10">
+                    <div class="swiper-button-prev swiper-button-prev"></div>
+                </div>
+                
+                <div class="swiper-button-next swiper-button-next   "></div>
+            </div>
+        </div>
+        <div class="text-5xl text-bluebtn font-bold shadow-xl rounded-3xl absolute py-10 px-36 bg-white top-[-65px] left-1/2 -translate-x-1/2 -translate-y-1/4">ROADMAP</div>
+    </div>
+    <div class="w-[1080px] flex-col justify-center mx-auto">
+        <div class="grid grid-cols-12 mt-36">
+            <div class="col-span-2 relative">
+
+            </div>
+            <div class="col-span-10 border-4 border-bluebtn rounded-verylarge p-16 relative flex flex-col justify-items-end">
+
+                <div class="text-6xl text-bluebtn font-bold text-end">WHAT IS</div>
+                <br>
+                <div class="text-6xl text-bluebtn font-bold text-end">ROYAL</div>
+                <br>
+                <div class="text-xl text-end">
+                    Lorem ipsum dolor sit amet, <br>consectetur adipiscing elit, sed do <br>eiusmod tempor incididunt ut labore et <br>dolore magna aliqua. Ut enim ad <br>minim veniam,
+                </div>
+                <div class="flex justify-end">
+                    <button class="bg-bluebtn text-white text-center font-bold px-5 py-2 rounded-xl mt-8 right-0 w-fit">READ WHITEPAPER</button>
+                </div>
+                <div class="absolute left-[-270px] top-[-170px]">
+                    <img src="../image/RW 4-01 2.png " alt="img" class=" object-cover z-10 w-[550px] h-[670px]">
+                    <div class="">
+                        <img src="../image/book.png " alt="img" class=" z-20 absolute top-[250px]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-[#FAFAFA] pb-20 pt-32 py-16 mt-40 relative flex-col justify-center z-20">
+        <div class="w-[1080px] flex-col justify-center mx-auto">
+            <!-- Slider main container -->
+            <div class="swiper h-fit p10 contant">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="rounded-2xl px-7 py-5 bg-bluebtn shadow-md h-[136px] mb-3">
+                    </div>
+                    <div class="rounded-2xl px-7 py-5 bg-white shadow-lg">
+                        <div class="text-bluebtn text-xl font-bold">Title 1</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl px-7 py-5 bg-bluebtn shadow-md h-[136px] mb-3">
+                    </div>
+                    <div class="rounded-2xl px-7 py-5 bg-white shadow-lg">
+                        <div class="text-bluebtn text-xl font-bold">Title 2</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl px-7 py-5 bg-bluebtn shadow-md h-[136px] mb-3">
+                    </div>
+                    <div class="rounded-2xl px-7 py-5 bg-white shadow-lg">
+                        <div class="text-bluebtn text-xl font-bold">Title 3</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl px-7 py-5 bg-bluebtn shadow-md h-[136px] mb-3">
+                    </div>
+                    <div class="rounded-2xl px-7 py-5 bg-white shadow-lg">
+                        <div class="text-bluebtn text-xl font-bold">Title 4</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rounded-2xl px-7 py-5 bg-bluebtn shadow-md h-[136px] mb-3">
+                    </div>
+                    <div class="rounded-2xl px-7 py-5 bg-white shadow-lg">
+                        <div class="text-bluebtn text-xl font-bold">Title 5</div>
+                        <div class="">
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,<br>
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="">
+                    <div class="swiper-button-prev swiper-button-prev"></div>
+                </div>
+                
+                <div class="swiper-button-next swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="text-5xl text-bluebtn font-bold drop-shadow-lg rounded-3xl absolute py-10 px-36 bg-white top-[-65px] left-1/2 -translate-x-1/2 -translate-y-1">PRESS RELEASE</div>
+    </div>
+    <div class="bg-bluebtn flex justify-center">
+        <div class="w-[1080px]">
+            <div class="text-white font-bold text-center text-5xl mt-20">FAQs</div>
+            <div class="text-white font-bold text-2xl mt-10 border-t-[1px] py-5">What is a Pre-Sale?</div>
+        </div>
+
+
+    </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
