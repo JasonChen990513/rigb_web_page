@@ -6,10 +6,10 @@
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <style>
-    body{
-        /* width: 1920px;
-        margin: 0 auto; */
-    }
+    /* body{
+        width: 1920px;
+        margin: 0 auto; 
+    } */
     .absolute-center {
         position: absolute;
         top: 50%;
@@ -31,20 +31,33 @@
   </style>
 </head>
 <body class="font-Nunito items-center">
-    <nav class="flex justify-between my-10 mx-32">
-        <div class="px-4 cursor-pointer justify-start" id="burger">
-            <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    <nav class="flex justify-between mt-5 xl:mt-10 xl:mb-10 xl:mx-32 h-fit">
+        <div class="px-4 cursor-pointer justify-start" id="navbar">
+            <img class="cursor-pointer " src="../image/icon.svg">
         </div>
-        <div class="flex justify-center">
-            <a class="mr-8 text-lg font-bold">How it Works</a>
-            <a class="mr-8 text-lg font-bold">Proof of Reserve</a>
-            <a class="mr-8 text-lg font-bold">Royal Gold</a>
-            <a class="mr-8 text-lg font-bold">Royal Dollar</a>
-            <a class="mr-8 text-lg font-bold">new</a>
+        <div>
+            <div class="px-4 cursor-pointer xl:hidden flex justify-end" id="menuIcon">
+                <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </div>
+            <div class="hidden xl:flex xl:justify-center ">
+                <a class="mr-8 text-lg font-bold">How it Works</a>
+                <a class="mr-8 text-lg font-bold">Proof of Reserve</a>
+                <a class="mr-8 text-lg font-bold">Royal Gold</a>
+                <a class="mr-8 text-lg font-bold">Royal Dollar</a>
+                <a class="mr-8 text-lg font-bold">new</a>
+            </div>
+            <div class="flex flex-col hidden" id="menu">
+                <a class="mr-8 text-lg font-bold border-b-[1px] border-black">How it Works</a>
+                <a class="mr-8 text-lg font-bold border-b-[1px] border-black">Proof of Reserve</a>
+                <a class="mr-8 text-lg font-bold border-b-[1px] border-black">Royal Gold</a>
+                <a class="mr-8 text-lg font-bold border-b-[1px] border-black">Royal Dollar</a>
+                <a class="mr-8 text-lg font-bold border-b-[1px] border-black">new</a>
+            </div>
         </div>
+
     </nav>
-    <main class="w-[1080px] flex-col justify-center mx-auto">
-        <div class="grid grid-cols-12">
+    <main class="xl:w-[1080px] lg:w-[1024px] md:w-[768px] sm:w-[640px] w-screen flex flex-col justify-center mx-auto ">
+        <div class="grid grid-cols-6 xl:grid-cols-12 mx-2">
             <div class="col-span-6">
                 <div class="grid grid-rows-4">
                     <div class="text-5xl text-bluebtn font-bold">
@@ -77,23 +90,17 @@
 
 
                 </div>
-                <!-- <div>
-                    <div class="w-[400] bg-yellow-500 rounded-full mx-7 h-[2px] relative"></div>
-                    <div class="my-2 text-bluebtn text-center absolute-center">
-                        <div >1 ROYAL = $0.031</div>
-                    </div>
-                </div> -->
                 <div class="mb-2 mt-4 text-bluebtn text-center items-center">
                     <div >1 ROYAL = $0.031</div>
                 </div>
                 <div class="grid grid-cols-3">
-                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-14">
+                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-14 lg:h-12 md:h-10 sm:h-8">
                         <p class="text-center">ETH</p>
                     </div>
-                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-14">
+                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-14 lg:h-12 md:h-10 sm:h-8">
                         <p class="text-center">ETH</p>
                     </div>
-                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-14">
+                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-14 lg:h-12 md:h-10 sm:h-8">
                         <p class="text-center">ETH</p>
                     </div>
                     
@@ -178,7 +185,7 @@
                 </div>
                 <button class="bg-bluebtn text-white text-center font-bold px-5 py-2 rounded-xl mt-8">READ WHITEPAPER</button>
                 
-                <div class="absolute right-[-270px] top-[-170px]">
+                <div class="absolute right-[-270px] top-[-170px] hidden 2xl:block">
                     <img src="../image/RW 4-01 2.png " alt="img" class=" object-cover z-10 w-[550px] h-[670px]">
                     <div class="">
                         <img src="../image/book.png " alt="img" class=" z-20 absolute top-[250px]">
@@ -305,7 +312,7 @@
                 <div class="swiper-button-next swiper-button-next   "></div>
             </div>
         </div>
-        <div class="text-5xl text-bluebtn font-bold shadow-xl rounded-3xl absolute py-10 px-36 bg-white top-[-65px] left-1/2 -translate-x-1/2 -translate-y-1/4">ROADMAP</div>
+        <div class="text-5xl text-bluebtn font-bold shadow-xl rounded-3xl absolute py-10 px-36 bg-white top-[-65px] left-1/2 -translate-x-1/2 -translate-y-1">ROADMAP</div>
     </div>
     <div class="w-[1080px] flex-col justify-center mx-auto">
         <div class="grid grid-cols-12 mt-36">
@@ -409,15 +416,92 @@
                 <div class="swiper-button-next swiper-button-next"></div>
             </div>
         </div>
-        <div class="text-5xl text-bluebtn font-bold drop-shadow-lg rounded-3xl absolute py-10 px-36 bg-white top-[-65px] left-1/2 -translate-x-1/2 -translate-y-1">PRESS RELEASE</div>
+        <div class="text-5xl text-bluebtn font-bold drop-shadow-lg rounded-3xl absolute py-10 px-36 bg-white top-[-65px] left-1/2 -translate-x-1/2 -translate-y-1 text-center">PRESS RELEASE</div>
     </div>
-    <div class="bg-bluebtn flex justify-center">
-        <div class="w-[1080px]">
-            <div class="text-white font-bold text-center text-5xl mt-20">FAQs</div>
-            <div class="text-white font-bold text-2xl mt-10 border-t-[1px] py-5">What is a Pre-Sale?</div>
+    <div class="w-[1080px] flex-col justify-center mx-auto">
+        <div class="mt-16 mb-10 text-5xl text-bluebtn font-bold text-center">POWER BY</div>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="border-2 border-bluebtn text-center h-24 rounded-3xl col-span-1 m-4 flex justify-center items-center"><p class="text-center">Logo</p></div>
+            <div class="border-2 border-bluebtn text-center h-24 rounded-3xl col-span-1 m-4 flex justify-center items-center"><p class="text-center">Logo</p></div>
+            <div class="border-2 border-bluebtn text-center h-24 rounded-3xl col-span-1 m-4 flex justify-center items-center"><p class="text-center">Logo</p></div>        
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="border-2 border-bluebtn text-center h-24 rounded-3xl col-span-1 m-4 flex justify-center items-center"><p class="text-center">Logo</p></div>
+            <div class="border-2 border-bluebtn text-center h-24 rounded-3xl col-span-1 m-4 flex justify-center items-center"><p class="text-center">Logo</p></div>
+            <div class="border-2 border-bluebtn text-center h-24 rounded-3xl col-span-1 m-4 flex justify-center items-center"><p class="text-center">Logo</p></div>        
         </div>
 
+    </div>
+    <div class="bg-bluebtn flex justify-center py-20">
+        <div class="w-[1080px]">
+            <div class="text-white font-bold text-center text-5xl ">FAQs</div>
+            <div class="mt-10 border-t-[1px] faqsBtn cursor-pointer">
+                <div class=" flex justify-between items-center">
+                    <div class="text-white font-bold text-2xl py-5">What is a Pre-Sale?</div>
+                    <div class="px-4  text-white ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                </div>
+                <div class="text-white text-lg faqContent hidden pb-5">The Royal Euro (REUR) stablecoin, Euro cash reserves at a 1:1 ratio, achieving 100% cash collateralization verifiable on-chain in real-time, REUR operates under a full segregation of assets framework, managed through Verified Reserve Fund Deployment (VRFD) overseen by international tier one banks. This stablecoin will serve as the foundational collateral for the creation of two additional stablecoins – the Royal Dollar (ROYAL) and the Royal Gold (RXAU) Stablecoin.</div>
+            </div>
+            <div class="border-t-[1px] faqsBtn cursor-pointer">
+                <div class=" flex justify-between items-center ">
+                    <div class="text-white font-bold text-2xl py-5">What is ROYAL?</div>
+                    <div class="px-4 text-white ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                </div>
+                <div class="text-white text-lg faqContent hidden pb-5">The Royal Dollar is a stablecoin bound to the USD, using Royal Euro stablecoins (REUR) as collateral. REUR is fully backed by 100% Euro cash deposited by the Royal Investment Bank Group in top-tier 1 international banks, establishing bank-grade security and stability.</div>
+            </div>
+            <div class="border-t-[1px] faqsBtn cursor-pointer">
+                <div class=" flex justify-between items-center">
+                    <div class="text-white font-bold text-2xl py-5">What is RXAU?</div>
+                    <div class="px-4 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                </div>
+                <div class="text-white text-lg faqContent hidden pb-5">Royal Gold is a stablecoin backed by REUR collateral and pegged to the international market Euro price of one troy ounce gold.</div>
+            </div>
+            <div class="border-t-[1px] faqsBtn cursor-pointer">
+                <div class=" flex justify-between items-center">
+                    <div class="text-white font-bold text-2xl py-5">What is RIBG?</div>
+                    <div class="px-4 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                </div>
+                <div class="text-white text-lg faqContent hidden pb-5">RIBG, a leading financial institution, specializes in traditional finance and emerging digital assets markets.With a focus on regulatory compliance and technological innovation, we offer integrated investment banking services, develop stable coin technology, facilitate remittance activities and digital asset trading</div>
+            </div>
+            <div class="border-t-[1px] faqsBtn cursor-pointer">
+                <div class=" flex justify-between items-center">
+                    <div class="text-white font-bold text-2xl py-5">How do RIB stablecoin Work?</div>
+                    <div class="px-4 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                </div>
+                <div class="text-white text-lg faqContent hidden pb-5">REUR is a stablecoin backed by 100% Euro cash reserves and managed through smart contracts on DLT. It provides transparency, compliance, and security and operates under a full segregation of assets framework. The technology execution of REUR includes Multi-Party Computation (MPC), independent minters, and specialized protocols to ensure compliance. It is accessible to counter-parties onboarded through rigorous compliance procedures, ensuring adherence to regulatory standards. The stablecoin is distributed through on-chain registration and off-chain compliance mechanisms and facilitates liquidity through liquidity providers.</div>
+            </div>
+            <div class="border-t-[1px] flex justify-start items-center pt-5">
+                <bottom class="border-2 rounded-full text-2xl bg-bluebtn text-white px-5 py-2 cursor-pointer transition hover:text-bluebtn hover:bg-white ease-in duration-300">Read all FAQs</bottom>
+            </div>
+        </div>
+    </div>
+    <div class="h-10"></div>
+    <div class="bg-[#272727]">
+        <div class="grid grid-cols-2 ">
+            <div class="col-span-1">
 
+            </div>
+        </div>
     </div>
 
     
