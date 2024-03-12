@@ -18,6 +18,7 @@
         
         transform: translate(-50%, -50%);
     }
+
     .p10 {
         padding: 40px;
     }
@@ -28,6 +29,88 @@
     .swiper-button-prev{
         left: 0;
     }
+
+    #menu {
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    #menu.show{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .faqContent{
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+
+    .faqContent.show{
+        display:block; 
+    }
+
+    @keyframes menuShow{
+        0%{
+            opacity: 0;
+            height: 0px;
+        }
+        100%{
+            opacity: 1;
+            height: 150px;
+        }
+    }
+
+    @keyframes menuHide{
+        0%{
+            opacity: 1;
+            height: 150px;
+        }
+        100%{
+            opacity: 0;
+            height: 0px;
+        }
+    }
+
+    @keyframes show{
+        0%{
+            opacity: 0;
+            height: 0%;
+        }
+        100%{
+            opacity: 1;
+            height: 100%;
+        }
+    }
+
+    @keyframes hide{
+        0%{
+            opacity: 1;
+            height: 100%;
+        }
+        100%{
+            opacity: 0;
+            height: 0%;
+        }
+    }
+
+    /* .faqContent.show{
+        opacity: 1;
+        visibility: visible;
+        display: block;
+        height: fit-content;
+    }
+
+    .faqContent{
+        transition: all 1s;
+        visibility: hidden;
+        opacity: 0;
+        height: 0px;
+        
+    } */
+
+
+
+
   </style>
 </head>
 <body class="font-Nunito items-center m-0 ">
@@ -41,18 +124,18 @@
                     <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </div>
                 <div class="hidden xl:flex xl:justify-center ">
-                    <a class="mr-8 text-lg font-bold">How it Works</a>
-                    <a class="mr-8 text-lg font-bold">Proof of Reserve</a>
-                    <a class="mr-8 text-lg font-bold">Royal Gold</a>
-                    <a class="mr-8 text-lg font-bold">Royal Dollar</a>
-                    <a class="mr-8 text-lg font-bold">new</a>
+                    <a class="mr-8 text-lg font-bold cursor-pointer scale105">How it Works</a>
+                    <a class="mr-8 text-lg font-bold cursor-pointer scale105">Proof of Reserve</a>
+                    <a class="mr-8 text-lg font-bold cursor-pointer scale105">Royal Gold</a>
+                    <a class="mr-8 text-lg font-bold cursor-pointer scale105">Royal Dollar</a>
+                    <a class="mr-8 text-lg font-bold cursor-pointer scale105">new</a>
                 </div>
-                <div class="flex flex-col hidden" id="menu">
-                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black">How it Works</a>
-                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black">Proof of Reserve</a>
-                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black">Royal Gold</a>
-                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black">Royal Dollar</a>
-                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black">new</a>
+                <div class="hidden opacity-0 xl:hidden" id="menu">
+                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black cursor-pointer scale105">How it Works</a>
+                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black cursor-pointer scale105">Proof of Reserve</a>
+                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black cursor-pointer scale105">Royal Gold</a>
+                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black cursor-pointer scale105">Royal Dollar</a>
+                    <a class="mr-8 text-lg font-bold border-b-[1px] border-black cursor-pointer scale105">new</a>
                 </div>
             </div>
         </nav>
@@ -62,7 +145,7 @@
         <div class="flex flex-col-reverse xl:grid xl:grid-cols-12 mx-2 ">
             <div class="col-span-6">
                 <div class="grid grid-rows-3">
-                    <div class="text-5xl text-bluebtn font-bold text-center xl:text-start">
+                    <div class="text-5xl text-bluebtn font-bold text-center xl:text-start xl:pt-5">
                         Lorem lpsum molestie nunc non blandith
                     </div>
                     <div>
@@ -71,11 +154,11 @@
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </div>
                     <div class="mt-10 xl:mt-20">
-                        <a class="btn bg-bluebtn text-white">Contact us</a>
+                        <button class=" scale105 btn bg-bluebtn text-white ">Contact us</button>
                     </div>
                 </div>
             </div>
-            <div class="col-span-6 bg-slate-100 rounded-2xl mb-4 pb-4">
+            <div class="col-span-6 bg-slate-100 rounded-2xl mb-4 pb-4 z-10">
                 <div class=" text-5xl text-bluebtn mt-5 font-bold text-center">    
                     ROYAL Per-Sale
                 </div>
@@ -115,7 +198,7 @@
                     <div class="flex bg-white rounded w-full">
                         <input id="tokenType" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" disabled>
                     </div>
-                    <button class="bg-gradient-to-r from-btn_2_from to-btn_1_to rounded w-full mt-4 h-8 text-white font-bold">CONNECT WALLET</button>
+                    <button class="bg-gradient-to-r from-btn_2_from to-btn_1_to rounded w-full mt-4 h-8 text-white font-bold transform hover:opacity-90">CONNECT WALLET</button>
 
                 </div>
                 <div class="text-bluebtn underline text-center font-bold mt-4">
@@ -140,10 +223,10 @@
             </div>
         </div>
         <div class="">
-            <div class="text-center text-bluebtn font-bold text-3xl sm:text-5xl mt-[100px] sm:mt-[200px] md:mt-[200px] xl:mt-[300px]">A Royal Digital Dollar,<br> Unlock Endless Possibilities</div>
+            <div class="text-center text-bluebtn font-bold text-3xl sm:text-5xl mt-[100px] sm:mt-[200px] md:mt-[200px] lg:mt-[300px]">A Royal Digital Dollar,<br> Unlock Endless Possibilities</div>
             <div class="text-center font-bold text-lg mt-5">RXAU and RUSD ignite a global network, empowering businesses <br>and innovators to redefine the possibilities of money transfer.</div>
             <div class="flex justify-center">
-                <button class="rounded-full bg-bluebtn text-white mt-5 text-2xl px-10 py-1.5 ">Visit Royal</button>
+                <button class="rounded-full bg-bluebtn text-white mt-5 text-2xl px-10 py-1.5 scale105">Visit Royal</button>
             </div>
         </div>
         <div>
@@ -164,8 +247,8 @@
                     <div class="font-bold text-lg">tristique senectus et netus <br>et malesuada fames ac</div>
                 </div>
                 <div class="grid grid-cols-2 gap-2 m-4">
-                    <div class="text-white rounded-2xl bg-bluebtn py-2 px-5 w-auto text-center">BUY ROYAL</div>
-                    <div class="text-white rounded-2xl bg-gradient-to-r from-btn_1_from to-btn_1_to py-2 px-5 w-auto text-center">NEED HELP?</div>
+                    <div class="text-white rounded-2xl bg-bluebtn py-2 px-5 w-auto text-center cursor-pointer scale105">BUY ROYAL</div>
+                    <div class="text-white rounded-2xl bg-gradient-to-r from-btn_1_from to-btn_1_to py-2 px-5 w-auto text-center cursor-pointer scale105">NEED HELP?</div>
                 </div>
 
             </div>
@@ -180,7 +263,7 @@
                 <div class="text-lg sm:text-xl">
                     Lorem ipsum dolor sit amet, <br>consectetur adipiscing elit, sed do <br>eiusmod tempor incididunt ut labore et <br>dolore magna aliqua. Ut enim ad <br>minim veniam,
                 </div>
-                <button class="bg-bluebtn text-white text-center font-bold px-5 py-2 rounded-xl mt-8">READ WHITEPAPER</button>
+                <button class="bg-bluebtn text-white text-center font-bold px-5 py-2 rounded-xl mt-8 scale105">READ WHITEPAPER</button>
                 
                 <div class="absolute right-[-270px] top-[-170px] hidden xl:block">
                     <img src="../image/RW 4-01 2.png " alt="img" class=" object-cover z-10 w-[550px] h-[670px]">
@@ -432,57 +515,82 @@
             <div class="mt-10 border-t-[1px] faqsBtn cursor-pointer">
                 <div class=" flex justify-between items-center">
                     <div class="text-white font-bold text-2xl py-5">What is a Pre-Sale?</div>
-                    <div class="px-4  text-white ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                    <div class="px-4  text-white showContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>
                     </div>
+                    <div class="px-4  text-white hidden hideContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                          </svg>                          
+                    </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent hidden pb-5">The Royal Euro (REUR) stablecoin, Euro cash reserves at a 1:1 ratio, achieving 100% cash collateralization verifiable on-chain in real-time, REUR operates under a full segregation of assets framework, managed through Verified Reserve Fund Deployment (VRFD) overseen by international tier one banks. This stablecoin will serve as the foundational collateral for the creation of two additional stablecoins – the Royal Dollar (ROYAL) and the Royal Gold (RXAU) Stablecoin.</div>
+                <div class="text-white sm:text-lg faqContent opacity-0 hidden">The Royal Euro (REUR) stablecoin, Euro cash reserves at a 1:1 ratio, achieving 100% cash collateralization verifiable on-chain in real-time, REUR operates under a full segregation of assets framework, managed through Verified Reserve Fund Deployment (VRFD) overseen by international tier one banks. This stablecoin will serve as the foundational collateral for the creation of two additional stablecoins – the Royal Dollar (ROYAL) and the Royal Gold (RXAU) Stablecoin.</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
                 <div class=" flex justify-between items-center ">
                     <div class="text-white font-bold text-2xl py-5">What is ROYAL?</div>
-                    <div class="px-4 text-white ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                    <div class="px-4  text-white showContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>
                     </div>
+                    <div class="px-4  text-white hidden hideContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                          </svg>                          
+                    </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent hidden pb-5">The Royal Dollar is a stablecoin bound to the USD, using Royal Euro stablecoins (REUR) as collateral. REUR is fully backed by 100% Euro cash deposited by the Royal Investment Bank Group in top-tier 1 international banks, establishing bank-grade security and stability.</div>
+                <div class="text-white sm:text-lg faqContent opacity-0 hidden">The Royal Dollar is a stablecoin bound to the USD, using Royal Euro stablecoins (REUR) as collateral. REUR is fully backed by 100% Euro cash deposited by the Royal Investment Bank Group in top-tier 1 international banks, establishing bank-grade security and stability.</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
                 <div class=" flex justify-between items-center">
                     <div class="text-white font-bold text-2xl py-5">What is RXAU?</div>
-                    <div class="px-4 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                    <div class="px-4  text-white showContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>
                     </div>
+                    <div class="px-4  text-white hidden hideContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                          </svg>                          
+                    </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent hidden pb-5">Royal Gold is a stablecoin backed by REUR collateral and pegged to the international market Euro price of one troy ounce gold.</div>
+                <div class="text-white sm:text-lg faqContent opacity-0 hidden">Royal Gold is a stablecoin backed by REUR collateral and pegged to the international market Euro price of one troy ounce gold.</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
                 <div class=" flex justify-between items-center">
                     <div class="text-white font-bold text-2xl py-5">What is RIBG?</div>
-                    <div class="px-4 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                    <div class="px-4  text-white showContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>
                     </div>
+                    <div class="px-4  text-white hidden hideContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                          </svg>                          
+                    </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent hidden pb-5">RIBG, a leading financial institution, specializes in traditional finance and emerging digital assets markets.With a focus on regulatory compliance and technological innovation, we offer integrated investment banking services, develop stable coin technology, facilitate remittance activities and digital asset trading</div>
+                <div class="text-white sm:text-lg faqContent opacity-0 hidden">RIBG, a leading financial institution, specializes in traditional finance and emerging digital assets markets.With a focus on regulatory compliance and technological innovation, we offer integrated investment banking services, develop stable coin technology, facilitate remittance activities and digital asset trading</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
                 <div class=" flex justify-between items-center">
                     <div class="text-white font-bold text-2xl py-5">How do RIB stablecoin Work?</div>
-                    <div class="px-4 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 x">
+                    <div class="px-4  text-white showContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>
                     </div>
+                    <div class="px-4  text-white hidden hideContent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                          </svg>                          
+                    </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent hidden pb-5">REUR is a stablecoin backed by 100% Euro cash reserves and managed through smart contracts on DLT. It provides transparency, compliance, and security and operates under a full segregation of assets framework. The technology execution of REUR includes Multi-Party Computation (MPC), independent minters, and specialized protocols to ensure compliance. It is accessible to counter-parties onboarded through rigorous compliance procedures, ensuring adherence to regulatory standards. The stablecoin is distributed through on-chain registration and off-chain compliance mechanisms and facilitates liquidity through liquidity providers.</div>
+                <div class="text-white sm:text-lg faqContent opacity-0 hidden">REUR is a stablecoin backed by 100% Euro cash reserves and managed through smart contracts on DLT. It provides transparency, compliance, and security and operates under a full segregation of assets framework. The technology execution of REUR includes Multi-Party Computation (MPC), independent minters, and specialized protocols to ensure compliance. It is accessible to counter-parties onboarded through rigorous compliance procedures, ensuring adherence to regulatory standards. The stablecoin is distributed through on-chain registration and off-chain compliance mechanisms and facilitates liquidity through liquidity providers.</div>
             </div>
             <div class="border-t-[1px] flex justify-start items-center pt-5">
                 <bottom class="border-2 rounded-full text-2xl bg-bluebtn text-white px-5 py-2 cursor-pointer transition hover:text-bluebtn hover:bg-white ease-in duration-300">Read all FAQs</bottom>
@@ -539,8 +647,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+        
+    </div>    
+<!-- 
+    <div>
+        <input type="button" value="btn" onclick="document.getElementById('demo').classList.toggle('show')">
+        <div id="demo" ><img src="../image/bg_1.png"></div>
+        <div class="bg-slate-600">123</div>
+    </div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="index.js"></script>

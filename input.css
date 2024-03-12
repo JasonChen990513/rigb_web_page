@@ -26,3 +26,6 @@
     @apply flex items-center justify-center mt-[10px];
 }
 
+.scale105{
+    @apply transform hover:scale-105 hover:opacity-75 transition ease-out duration-300;
+}
