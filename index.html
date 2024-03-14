@@ -125,18 +125,18 @@
         <div class="xl:w-[1080px] lg:w-[1024px] md:w-[768px] sm:w-[640px] w-screen flex flex-col justify-center mx-auto backdrop-filter-none">
             <nav class="flex justify-between mb-3 mt-5 h-fit">
                 <div class="px-4 cursor-pointer justify-start backdrop-filter-none" id="">
-                    <img class="cursor-pointer h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16" src="../image/icon.svg">
+                    <img class="cursor-pointer h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 " src="../image/icon.svg">
                 </div>
                 <div class="">
-                    <div class="px-4 cursor-pointer xl:hidden flex justify-end" id="menuIcon">
-                        <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <div class="px-4 cursor-pointer xl:hidden flex justify-end " id="menuIcon">
+                        <svg class="w-6 h-6 text-shadow-sm shadow-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </div>
                     <div class="hidden xl:flex xl:justify-center my-auto place-items-center">
-                        <div class="mr-8 text-lg font-bold cursor-pointer scale105">How it Works</div>
-                        <div class="mr-8 text-lg font-bold cursor-pointer scale105">Proof of Reserve</div>
-                        <div class="mr-8 text-lg font-bold cursor-pointer scale105">Royal Gold</div>
-                        <div class="mr-8 text-lg font-bold cursor-pointer scale105">Royal Dollar</div>
-                        <div class="mr-8 text-lg font-bold cursor-pointer scale105">new</div>
+                        <div class="mr-8 text-lg font-bold cursor-pointer scale105 drop-shadow-[2px_2px_1px_var(--tw-shadow-color)] shadow-white">How it Works</div>
+                        <div class="mr-8 text-lg font-bold cursor-pointer scale105 [text-shadow:1px_1px_2px_var(--tw-shadow-color)] shadow-white">Proof of Reserve</div>
+                        <div class="mr-8 text-lg font-bold cursor-pointer scale105 text-shadow-sm shadow-white">Royal Gold</div>
+                        <div class="mr-8 text-lg font-bold cursor-pointer scale105 text-shadow-sm shadow-white">Royal Dollar</div>
+                        <div class="mr-8 text-lg font-bold cursor-pointer scale105 text-shadow-sm shadow-white">new</div>
                     </div>
                     <div class="hidden opacity-0 xl:hidden" id="menu">
                         <div class="mr-8 text-lg font-bold border-b-[1px] border-black cursor-pointer scale105">How it Works</div>
@@ -172,42 +172,41 @@
                     ROYAL Per-Sale
                 </div>
                 <div class="mx-4 bg-bluebtn rounded-2xl pt-7">
-                    <div class="text-white text-center text-4xl">$9,999,999.9</div>
-                    <div class="text-white text-sm mx-7 mt-8">99.99% of minimum goal raise</div>
-                    <div class="h-3 bg-gradient-to-r from-btn_1_from to-btn_1_to rounded-full mx-7"></div>
-                    <div class="text-white text-sm text-end mx-7">$10,000,000.0</div>
-                    <div class="text-white text-center text-lg mt-4">10000 Participants</div>
-                    <div class="text-white text-center text-sm font-thin">Listing price = $0.05</div>
+                    <div class="text-white text-center text-4xl" id="remainAmount">$9,999,999.9</div>
+                    <div class="text-white text-sm mx-7 mt-8" id="remainPersent">99.99% of minimum goal raise</div>
+                    <div class="h-3 bg-gradient-to-r from-btn_1_from to-btn_1_to rounded-full mx-7" id="remainBar"></div>
+                    <div class="text-white text-sm text-end mx-7" >$10,000,000.0</div>
+                    <div class="text-white text-center text-lg mt-4" id="Participants">10000 Participants</div>
+                    <div class="text-white text-center text-sm font-thin" id="listingPrice">Listing price = $0.05</div>
 
 
                 </div>
                 <div class="mb-2 mt-4 text-bluebtn text-center items-center">
-                    <div >1 ROYAL = $0.031</div>
+                    <div id="currentPrice">1 ROYAL = $0.031</div>
                 </div>
                 <div class="grid grid-cols-3">
-                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-8 lg:h-12 md:h-12 sm:h-8">
+                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-8 lg:h-12 md:h-12 sm:h-8 cursor-pointer" id="ETH">
                         <p class="text-center">ETH</p>
                     </div>
-                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-8 lg:h-12 md:h-12 sm:h-8">
-                        <p class="text-center">ETH</p>
+                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-8 lg:h-12 md:h-12 sm:h-8 cursor-pointer" id="USDT">
+                        <p class="text-center">USDT</p>
                     </div>
-                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-8 lg:h-12 md:h-12 sm:h-8">
-                        <p class="text-center">ETH</p>
+                    <div class="border-bluebtn border-2 rounded-lg m-3 flex justify-center items-center h-8 lg:h-12 md:h-12 sm:h-8 cursor-pointer" id="BNB">
+                        <p class="text-center">BNB</p>
                     </div>
-                    
                 </div>
 
 
                 <div class="mx-4 bg-bluebtn rounded-2xl pt-7 p-4">
                     <samp id="inputType" class="text-white">Amount in USDT you</samp>
                     <div class="flex bg-white rounded w-full">
-                        <input id="tokenType" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none">
+                        <input id="payToken" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" type="number">
                     </div>
-                    <samp id="inputType" class="text-white">Amount in USDT you</samp>
+                    <samp id="inputType" class="text-white">Amount in $SCORP you receive </samp>
                     <div class="flex bg-white rounded w-full">
-                        <input id="" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" disabled>
+                        <input id="getToken" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" disabled>
                     </div>
-                    <button class="bg-gradient-to-r from-btn_2_from to-btn_1_to rounded w-full mt-4 h-8 text-white font-bold transform hover:opacity-90">CONNECT WALLET</button>
+                    <button class="bg-gradient-to-r from-btn_2_from to-btn_1_to rounded w-full mt-4 h-8 text-white font-bold transform hover:opacity-90" id="connectWellat">CONNECT WALLET</button>
 
                 </div>
                 <div class="text-bluebtn underline text-center font-bold mt-4">

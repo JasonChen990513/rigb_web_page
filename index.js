@@ -179,3 +179,32 @@ function changeNavbg(){
 //         menu.classList.add('hidden');
 //     }
 // });
+
+
+const userInput = document.getElementById('payToken');
+const userget = document.getElementById('getToken');
+const remainAmount = document.getElementById('remainAmount');
+const remainPersent = document.getElementById('remainPersent');
+const remainBar = document.getElementById('remainBar');
+const Participants = document.getElementById('Participants');
+const listingPrice = document.getElementById('listingPrice');
+const currentPrice = document.getElementById('currentPrice');
+const ETH = document.getElementById('ETH');
+const USTD = document.getElementById('USTD');
+const BNB = document.getElementById('BNB');
+
+//according to user input to claculate the receive token
+userInput.addEventListener('input',function(){
+    const inputValue = userInput.value;
+    userget.value = inputValue;
+})
+initPage();
+function initPage(){
+  //get the data from smart contract
+  remainAmount.textContent  = "$9,999,999.9";
+  remainPersent.textContent  = ((9999999.9/10000000.0)*100) + "% of minimum goal raise";
+}
+
+
+
+
