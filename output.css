@@ -1337,14 +1337,6 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
-.text-shadow{
-  text-shadow: 1px 1px 3.5px var(--tw-shadow-color);
-}
-
-.text-shadow-lg{
-  text-shadow: 1px 1px 4px var(--tw-shadow-color);
-}
-
 .text-shadow-sm{
   text-shadow: 1px 1px 3px var(--tw-shadow-color);
 }

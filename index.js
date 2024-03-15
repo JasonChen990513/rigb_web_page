@@ -1,3 +1,14 @@
+//set contract abi and address
+const contractAddress = "0x3B69D1d17A257fdb7AE7d8d9A27cC906FCC62a40";
+const contractABI = [{"inputs":[{"internalType":"address","name":"_USDT","type":"address"},{"internalType":"address","name":"_USDC","type":"address"},{"internalType":"address","name":"_priceFeedETHUSD","type":"address"},{"internalType":"address","name":"_treasury","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"stageIndex","type":"uint256"}],"name":"NextStageBegins","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"stage","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"startTime","type":"uint256"}],"name":"PresaleBegins","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"claimStart","type":"uint256"}],"name":"PresaleFinalized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint8","name":"stageIndex","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"startTime","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"endTime","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"priceInETH","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tokenSaleTarget","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"USDTTarget","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"minBuyAmount","type":"uint256"},{"indexed":false,"internalType":"bool","name":"soldOut","type":"bool"}],"name":"StageCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"currentStage","type":"uint8"},{"indexed":false,"internalType":"uint256","name":"newEndTime","type":"uint256"}],"name":"StageExtended","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokensClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"buyer","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"TokensPurchased","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"newTreasury","type":"address"}],"name":"TreasuryUpdated","type":"event"},{"inputs":[],"name":"PKCToken","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"USDC","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"USDT","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"stageIndex","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"}],"name":"buyTokensWithETH","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"token","type":"address"},{"internalType":"uint256","name":"stageIndex","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"uint256","name":"amountBuy","type":"uint256"}],"name":"buyTokensWithStableCoin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"},{"internalType":"uint256","name":"purchaseAmount","type":"uint256"}],"name":"calculateReferralBonus","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimStart","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_stageIndex","type":"uint256"}],"name":"concludeCurrentStage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimalOfStablecoin","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ethToUSDTDecimalPoints","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint8","name":"_currentStageIndex","type":"uint8"},{"internalType":"uint256","name":"_newEndTime","type":"uint256"}],"name":"extendCurrentStage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_claimStart","type":"uint256"},{"internalType":"contract IERC20","name":"_PKCToken","type":"address"}],"name":"finalizePresale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"findCurrentStageIndex","outputs":[{"internalType":"int256","name":"","type":"int256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLatestETHPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"presaleFinalized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referralRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralTiers","outputs":[{"internalType":"uint256","name":"amountThreshold","type":"uint256"},{"internalType":"uint256","name":"bonusPercentage","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referralsCount","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"stages","outputs":[{"internalType":"uint256","name":"startTime","type":"uint256"},{"internalType":"uint256","name":"endTime","type":"uint256"},{"internalType":"uint256","name":"priceInUSDT","type":"uint256"},{"internalType":"uint256","name":"nextStagePrice","type":"uint256"},{"internalType":"uint256","name":"totalTokensSold","type":"uint256"},{"internalType":"uint256","name":"totalUSDTRaised","type":"uint256"},{"internalType":"uint256","name":"minBuyAmount","type":"uint256"},{"internalType":"bool","name":"soldOut","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stagesInitialized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_startTime","type":"uint256"}],"name":"startPresale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalAmountInvested","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalStages","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalTokensSoldGlobal","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalUSDTBoughtByReferrals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUSDTRaisedGlobal","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tierIndex","type":"uint256"},{"internalType":"uint256","name":"amountThreshold","type":"uint256"},{"internalType":"uint256","name":"bonusPercentage","type":"uint256"}],"name":"updateReferralTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_newTreasury","type":"address"}],"name":"updateTreasury","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userTokenBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawETH","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"token","type":"address"}],"name":"withdrawStablecoin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}]
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = provider.getSigner();
+const writeGameContract = new ethers.Contract(contractAddress, contractABI, signer);
+const readGameContract = new ethers.Contract(contractAddress, contractABI, provider);
+const oneEther = 1000000000000000000;
+
+
+
 //setting the card slider section
 const swiper = new Swiper('.swiper', {
   // Optional parameters
@@ -94,9 +105,6 @@ function setMainmt(){
   const height = navbar.clientHeight;
   const main = document.getElementById('main');
   main.style.marginTop = (height+10) + "px" 
-  console.log(height)
-  console.log(navbar.style.top)
-  console.log(main.classList)
 }
 
 const element = document.getElementById('navBar');
@@ -105,7 +113,7 @@ const element = document.getElementById('navBar');
 const observer = new ResizeObserver(entries => {
   for (let entry of entries) {
     // Log the new height of the observed element
-    console.log('Height:', entry.contentRect.height);
+    //console.log('Height:', entry.contentRect.height);
     
     // Get the position of the special area relative to the viewport
     const faqsectionAreaPosition = faqsection.getBoundingClientRect().top;
@@ -193,16 +201,41 @@ const ETH = document.getElementById('ETH');
 const USTD = document.getElementById('USTD');
 const BNB = document.getElementById('BNB');
 
+//const 
+
+async function convertETHtoUSDT(){
+  let currentETHPrice = await readGameContract.getLatestETHPrice();
+  //console.log(currentETHPrice.toString());
+  let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
+  //console.log(CurrentStageIndex.toString());
+  const inputValue = userInput.value;
+  let ethToUSDTDecimalPoints = await readGameContract.ethToUSDTDecimalPoints();
+  //console.log(CurrentStageIndex.toString());
+
+  let amountInUSDT = (inputValue * currentETHPrice) / (10**ethToUSDTDecimalPoints);
+
+  const stage = await readGameContract.stages(CurrentStageIndex);
+  //console.log(stage)
+  let tokensToPurchase = (amountInUSDT * oneEther) / (stage.priceInUSDT);
+  //console.log(tokensToPurchase)
+  return tokensToPurchase;
+}
+
+
 //according to user input to claculate the receive token
-userInput.addEventListener('input',function(){
-    const inputValue = userInput.value;
-    userget.value = inputValue;
+userInput.addEventListener('input',async function(){
+    //const inputValue = userInput.value;
+    let result = await convertETHtoUSDT();
+    //console.log(result)
+    userget.value = result;
 })
 initPage();
 function initPage(){
   //get the data from smart contract
   remainAmount.textContent  = "$9,999,999.9";
-  remainPersent.textContent  = ((9999999.9/10000000.0)*100) + "% of minimum goal raise";
+  const percentage = ((9999999.9 / 10000000.0) * 100);
+
+  remainPersent.textContent = percentage + "% of minimum goal raise";
 }
 
 
