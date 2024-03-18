@@ -8,6 +8,9 @@
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
   type="application/javascript"></script> 
   <style>
+    .autoAdjust{
+        font-size: clamp(12px, 4vw, 64px);
+    }
     /* body{
         width: 1920px;
         margin: 0 auto; 
@@ -176,7 +179,9 @@
                 <div class="mx-4 bg-bluebtn rounded-2xl pt-7">
                     <div class="text-white text-center text-4xl" id="remainAmount">$9,999,999.9</div>
                     <div class="text-white text-sm mx-7 mt-8" id="remainPersent">99.99% of minimum goal raise</div>
-                    <div class="h-3 bg-gradient-to-r from-btn_1_from to-btn_1_to rounded-full mx-7" id="remainBar"></div>
+                    <dvi id="parentBar">
+                        <div class="h-3 bg-gradient-to-r from-btn_1_from to-btn_1_to rounded-full mx-7" id="remainBar"></div>
+                    </dvi>
                     <div class="text-white text-sm text-end mx-7" id="totalsupply">$10,000,000.0</div>
                     <div class="text-white text-center text-lg mt-4" id="Participants">10000 Participants</div>
                     <div class="text-white text-center text-sm font-thin" id="listingPrice">Listing price = $0.05</div>
@@ -206,7 +211,7 @@
                     </div>
                     <samp id="inputType" class="text-white">Amount in $SCORP you receive </samp>
                     <div class="flex bg-white rounded w-full">
-                        <input id="getToken" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" disabled>
+                        <input id="getToken" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" type="number">
                     </div>
                     <button class="bg-gradient-to-r from-btn_2_from to-btn_1_to rounded w-full mt-4 h-8 text-white font-bold transform hover:opacity-90" id="connectWellat">CONNECT WALLET</button>
 
@@ -665,6 +670,9 @@
         <div id="demo" ><img src="../image/bg_1.png"></div>
         <div class="bg-slate-600">123</div>
     </div> -->
+    <div class="test">
+        testing word
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="index.js"></script>

@@ -6,6 +6,7 @@ const signer = provider.getSigner();
 const writeGameContract = new ethers.Contract(contractAddress, contractABI, signer);
 const readGameContract = new ethers.Contract(contractAddress, contractABI, provider);
 const oneEther = 1000000000000000000;
+const totalSupply = 100000000000000000000000000;
 
 
 
@@ -95,6 +96,7 @@ window.addEventListener('resize', () => {
   }
   setMainmt();
   changeNavbg();
+  adjustBarWidth();
 });
 
 
@@ -104,7 +106,7 @@ function setMainmt(){
   const navbar = document.getElementById('navBar');
   const height = navbar.clientHeight;
   const main = document.getElementById('main');
-  main.style.marginTop = (height+10) + "px" 
+  main.style.marginTop = (height+10) + "px"; 
 }
 
 const element = document.getElementById('navBar');
@@ -190,20 +192,45 @@ function changeNavbg(){
 
 
 const userInput = document.getElementById('payToken');
-const userget = document.getElementById('getToken');
+const getToken = document.getElementById('getToken');
 const remainAmount = document.getElementById('remainAmount');
 const remainPersent = document.getElementById('remainPersent');
 const remainBar = document.getElementById('remainBar');
+const totalsupply = document.getElementById('totalsupply');
 const Participants = document.getElementById('Participants');
 const listingPrice = document.getElementById('listingPrice');
 const currentPrice = document.getElementById('currentPrice');
 const ETH = document.getElementById('ETH');
-const USTD = document.getElementById('USTD');
+const USDT = document.getElementById('USDT');
 const BNB = document.getElementById('BNB');
+const parentBar = document.getElementById('parentBar');
+const tokenSaleTargets = [
+  30000000,
+  30000000,
+  30000000,
+  35000000,
+  35000000,
+  60000000,
+  80000000,
+  100000000
+];
+
+let tokenType = "ETH";
+userInput.value = 0;
+getToken.value = 0;
+ETH.onclick = () =>{
+  tokenType = "ETH";
+  updateBuyToken();
+}
+
+USDT.onclick = () =>{
+  tokenType = "USDT";
+  updateBuyToken();
+}
 
 //const 
 
-async function convertETHtoUSDT(){
+async function buyTokenwithETH(){
   let currentETHPrice = await readGameContract.getLatestETHPrice();
   //console.log(currentETHPrice.toString());
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
@@ -218,24 +245,126 @@ async function convertETHtoUSDT(){
   //console.log(stage)
   let tokensToPurchase = (amountInUSDT * oneEther) / (stage.priceInUSDT);
   //console.log(tokensToPurchase)
-  return tokensToPurchase;
+  console.log(tokensToPurchase/oneEther)
+  return tokensToPurchase/oneEther;
 }
+
+
+
+async function tokensToETH(tokenAmount) {
+  let currentETHPrice = await readGameContract.getLatestETHPrice();
+
+  let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
+
+  const inputValue = getToken.value;
+  let ethToUSDTDecimalPoints = await readGameContract.ethToUSDTDecimalPoints();
+
+
+  //let amountInUSDT = (inputValue * currentETHPrice) / (10**ethToUSDTDecimalPoints);
+
+  const stage = await readGameContract.stages(CurrentStageIndex);
+
+  //let ETH=(((inputValue * (stage.priceInUSDT))/ oneEther) * (10**ethToUSDTDecimalPoints))/currentETHPrice;
+  //const eth = (inputValue * stage.priceInUSDT *(10 ** ethToUSDTDecimalPoints)) / (currentETHPrice * oneEther);
+  let ETH = (inputValue * stage.priceInUSDT) / ((currentETHPrice / (10 ** ethToUSDTDecimalPoints)) * oneEther);
+  console.log(ETH)
+  return ETH*oneEther;
+}
+
+async function buyTokensWithStableCoin(){
+  let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
+  const stage = await readGameContract.stages(CurrentStageIndex);
+  let amountInUSDT = userInput.value;
+  let tokensToPurchase = (amountInUSDT * oneEther) / (stage.priceInUSDT);
+  return tokensToPurchase/oneEther;
+}
+
+async function tokentoStableCoin(){
+  let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
+  const stage = await readGameContract.stages(CurrentStageIndex);
+  let amountInToken = getToken.value;
+  let amountInUSDT = (amountInToken * (stage.priceInUSDT))/oneEther;
+  return amountInUSDT*oneEther;
+}
+
+getToken.addEventListener('input',async function(){
+  if(tokenType == "ETH" && (userInput.value!=null)){
+    //const inputValue = userInput.value;
+    let result = await tokensToETH();
+    //console.log(result)
+    userInput.value = result;
+  } else if(tokenType == "USDT" && (userInput.value!=null)){
+    //const inputValue = userInput.value;
+    let result = await tokentoStableCoin();
+    console.log(result)
+    //console.log(result)
+    userInput.value = result;
+  }
+
+
+})
 
 
 //according to user input to claculate the receive token
 userInput.addEventListener('input',async function(){
-    //const inputValue = userInput.value;
-    let result = await convertETHtoUSDT();
-    //console.log(result)
-    userget.value = result;
+  await updateBuyToken();
 })
+
+async function updateBuyToken(){
+  if(tokenType == "ETH" && (userInput.value!=null)){
+    //const inputValue = userInput.value;
+    let result = await buyTokenwithETH();
+    //console.log(result)
+    getToken.value = result;
+  } else if(tokenType == "USDT" && (userInput.value!=null)){
+    //const inputValue = userInput.value;
+    let result = await buyTokensWithStableCoin();
+    //console.log(result)
+    getToken.value = result;
+  }
+} 
+async function getLatestSoldInfo(){
+
+}
+
+async function adjustBarWidth(){
+  let soldToken = (await readGameContract.totalTokensSoldGlobal())/oneEther;
+  //let totalToken = totalSupply/oneEther;
+  let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
+  let goalToken = tokenSaleTargets[CurrentStageIndex];
+  remainAmount.textContent  = "$ "+soldToken.toFixed(2).toLocaleString(undefined, { minimumFractionDigits: 2 });
+  const percentage = ((soldToken /goalToken) * 100).toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+  let pbarwidth = parentBar.offsetWidth;
+  let cbarwidth = remainBar.offsetWidth;
+  const computedStyle = window.getComputedStyle(remainBar);
+  const marginRight = parseFloat(computedStyle.getPropertyValue('margin-right'));
+  console.log(pbarwidth)
+  console.log(cbarwidth)
+  console.log(marginRight)
+  remainBar.style.width = (((percentage/100)*pbarwidth)-marginRight*2)+"px";
+  console.log(remainBar.offsetWidth)
+}
+
 initPage();
-function initPage(){
+async function initPage(){
   //get the data from smart contract
-  remainAmount.textContent  = "$9,999,999.9";
-  const percentage = ((9999999.9 / 10000000.0) * 100);
+  let soldToken = (await readGameContract.totalTokensSoldGlobal())/oneEther;
+  //let totalToken = totalSupply/oneEther;
+  let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
+  let goalToken = tokenSaleTargets[CurrentStageIndex];
+  console.log(soldToken)
+  console.log(goalToken)
+  remainAmount.textContent  = "$"+soldToken.toFixed(2).toLocaleString(undefined, { minimumFractionDigits: 2 });
+  const percentage = ((soldToken /goalToken) * 100).toLocaleString(undefined, { minimumFractionDigits: 2 });
+ 
+  adjustBarWidth();
 
   remainPersent.textContent = percentage + "% of minimum goal raise";
+  totalsupply.textContent = "$"+goalToken.toLocaleString(undefined, { minimumFractionDigits: 1 });
+
+
+
 }
 
 
