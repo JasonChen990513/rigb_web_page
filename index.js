@@ -8,7 +8,7 @@ const readGameContract = new ethers.Contract(contractAddress, contractABI, provi
 const oneEther = 1000000000000000000;
 const totalSupply = 100000000000000000000000000;
 
-
+//css and animation
 
 //setting the card slider section
 const swiper = new Swiper('.swiper', {
@@ -45,24 +45,24 @@ const swiper = new Swiper('.swiper', {
 const faqs = document.querySelectorAll(".faqsBtn");
 
 //use to control the faq section show and hide content and buttom
-faqs.forEach(faq => faq.addEventListener("click", (e)=>{
-  content = faq.querySelector(".faqContent")
+// faqs.forEach(faq => faq.addEventListener("click", (e)=>{
+//   content = faq.querySelector(".faqContent")
 
-  if (content.classList.contains('show')) {
-    content.style.animationName = "hide";
-    setTimeout(()=>{
-      content.classList.remove('show');
-    },500);
-    faq.querySelector(".showContent").classList.remove('hidden');
-    faq.querySelector(".hideContent").classList.add('hidden');
-  } else {
-    content.style.animationName = "show";
-    content.classList.add('show');
-    faq.querySelector(".showContent").classList.add('hidden');
-    faq.querySelector(".hideContent").classList.remove('hidden');
-  }
+//   if (content.classList.contains('show')) {
+//     content.style.animationName = "hide";
+//     setTimeout(()=>{
+//       content.classList.remove('show');
+//     },500);
+//     faq.querySelector(".showContent").classList.remove('hidden');
+//     faq.querySelector(".hideContent").classList.add('hidden');
+//   } else {
+//     content.style.animationName = "show";
+//     content.classList.add('show');
+//     faq.querySelector(".showContent").classList.add('hidden');
+//     faq.querySelector(".hideContent").classList.remove('hidden');
+//   }
 
-}));
+// }));
 
 
 const menuIcon = document.querySelector('#menuIcon');
@@ -73,15 +73,19 @@ const navbar = document.getElementById('navBar');
 menuIcon.addEventListener('click', (e) => {
     if (menu.classList.contains('show')) {
       document.querySelector("#menu").style.animationName = "menuHide";
-      navbar.style.backgroundColor = "";
+      document.querySelector("#navBar").style.animationName = "menuHidebg";
+      //navbar.style.backgroundColor = "";
       setTimeout(()=>{
         menu.classList.remove('show');
+        //navbar.classList.remove('show');
       },500);
       
     } else {
       document.querySelector("#menu").style.animationName = "menuShow";
+      document.querySelector("#navBar").style.animationName = "menuShowbg";
       menu.classList.add('show');
-      navbar.style.backgroundColor = "white";
+      //navbar.classList.remove('show');
+      //navbar.style.backgroundColor = "white";
     }
 });
 //set event listener for screen size change
@@ -157,9 +161,98 @@ function changeNavbg(){
         navbar.style.backgroundColor = '';
     }
   }
-
 }
 
+
+// This is the important part!
+function collapseSection(element) {
+  // get the height of the element's inner content, regardless of its actual size
+  var sectionHeight = element.scrollHeight;
+  
+  // temporarily disable all css transitions
+  var elementTransition = element.style.transition;
+  element.style.transition = '';
+  
+  // on the next frame (as soon as the previous style change has taken effect),
+  // explicitly set the element's height to its current pixel height, so we 
+  // aren't transitioning out of 'auto'
+  requestAnimationFrame(function() {
+    element.style.height = sectionHeight + 'px';
+    element.style.transition = elementTransition;
+    
+    // on the next frame (as soon as the previous style change has taken effect),
+    // have the element transition to height: 0
+    requestAnimationFrame(function() {
+      element.style.height = 0 + 'px';
+    });
+  });
+  
+  // mark the section as "currently collapsed"
+  element.setAttribute('data-collapsed', 'true');
+}
+
+function expandSection(element) {
+  // get the height of the element's inner content, regardless of its actual size
+  var sectionHeight = element.scrollHeight;
+  //console.log("expandSection height 1: " + sectionHeight);
+  
+  // Ensure the browser has rendered the initial height change before proceeding
+  requestAnimationFrame(function() {
+      // have the element transition to the height of its inner content
+      element.style.height = sectionHeight + 'px';
+      
+      //console.log("expandSection height 2: " + sectionHeight);
+      
+      // Ensure the browser has started the transition before proceeding
+      requestAnimationFrame(function() {
+          // when the next css transition finishes (which should be the one we just triggered)
+          element.addEventListener('transitionend', function(e) {
+              // remove this event listener so it only gets triggered once
+              //console.log("expandSection height final: " + element.offsetHeight);
+              element.removeEventListener('transitionend', arguments.callee);
+              
+              // remove "height" from the element's inline styles, so it can return to its initial value
+              element.style.height = null;
+          });
+      });
+  });
+  
+  // mark the section as "currently not collapsed"
+  element.setAttribute('data-collapsed', 'false');
+}
+
+faqs.forEach(faq => faq.addEventListener("click", (e)=>{
+  let content = faq.querySelector(".faqContent")
+  //console.log(content.textContent)
+  var isCollapsed = content.getAttribute('data-collapsed') === 'true';
+
+  if(isCollapsed) {
+    faq.querySelector(".showContent").classList.add('hidden');
+    faq.querySelector(".hideContent").classList.remove('hidden');
+    //console.log(content.offsetHeight);
+    //console.log('expandSection')
+    expandSection(content);
+    //setTimeout(()=>{console.log(content.offsetHeight);},1000);
+    content.style.height = 140 + "px";
+    content.setAttribute('data-collapsed', 'false');
+
+    const computedStyle = window.getComputedStyle(content);
+    const textColor = computedStyle.color;
+    //console.log(textColor);
+  } else {
+    faq.querySelector(".showContent").classList.remove('hidden');
+    faq.querySelector(".hideContent").classList.add('hidden');
+    //console.log('collapseSection')
+    //console.log(content.offsetHeight);
+    collapseSection(content);
+    //setTimeout(()=>{console.log(content.offsetHeight);},1000);
+  }
+}));
+
+faqs.forEach(faq => {
+  let content = faq.querySelector(".faqContent");
+  collapseSection(content);
+});
 
 
 
@@ -190,9 +283,11 @@ function changeNavbg(){
 //     }
 // });
 
+//get data from smart contract and put in UI
 
 const userInput = document.getElementById('payToken');
 const getToken = document.getElementById('getToken');
+const inputType = document.getElementById('inputType'); 
 const remainAmount = document.getElementById('remainAmount');
 const remainPersent = document.getElementById('remainPersent');
 const remainBar = document.getElementById('remainBar');
@@ -204,6 +299,9 @@ const ETH = document.getElementById('ETH');
 const USDT = document.getElementById('USDT');
 const BNB = document.getElementById('BNB');
 const parentBar = document.getElementById('parentBar');
+const connectWellat = document.getElementById('connectWellat');
+let bnbPrice = 0;
+
 const tokenSaleTargets = [
   30000000,
   30000000,
@@ -220,22 +318,56 @@ userInput.value = 0;
 getToken.value = 0;
 ETH.onclick = () =>{
   tokenType = "ETH";
+  inputType.textContent = "Amount in " + tokenType +" you";
   updateBuyToken();
+  updateRoyaltoToken();
 }
 
 USDT.onclick = () =>{
   tokenType = "USDT";
+  inputType.textContent = "Amount in " + tokenType +" you";
   updateBuyToken();
+  updateRoyaltoToken();
 }
+
+BNB.onclick = () =>{
+  tokenType = "BNB";
+  inputType.textContent = "Amount in " + tokenType +" you";
+  updateBuyToken();
+  updateRoyaltoToken();
+}
+
+connectWellat.onclick = () =>{
+  if(tokenType == "ETH" && (userInput!=0)){
+    alert('Call ETH buy token function')
+  } else if(tokenType == "USDT" && (userInput!=0)){
+    alert('Call USDT buy token function')
+  }
+}
+
+async function updateRoyaltoToken(){
+  let text = "1 ROYAL = "
+  if(tokenType == "ETH"){
+    let result = await tokensToETH(1);
+    currentPrice.textContent = text + result + "ETH";
+  } else if(tokenType == "USDT"){
+    let result = await tokentoStableCoin(1);
+    currentPrice.textContent = text + "$"+ result;
+  } else{
+    let result = await tokentoStableCoin(1);
+    currentPrice.textContent = text + result/bnbPrice + "BNB";
+  }
+}
+
 
 //const 
 
-async function buyTokenwithETH(){
+async function buyTokenwithETH(inputValue){
   let currentETHPrice = await readGameContract.getLatestETHPrice();
   //console.log(currentETHPrice.toString());
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
   //console.log(CurrentStageIndex.toString());
-  const inputValue = userInput.value;
+  //const inputValue = userInput.value;
   let ethToUSDTDecimalPoints = await readGameContract.ethToUSDTDecimalPoints();
   //console.log(CurrentStageIndex.toString());
 
@@ -246,7 +378,7 @@ async function buyTokenwithETH(){
   let tokensToPurchase = (amountInUSDT * oneEther) / (stage.priceInUSDT);
   //console.log(tokensToPurchase)
   console.log(tokensToPurchase/oneEther)
-  return tokensToPurchase/oneEther;
+  return tokensToPurchase;
 }
 
 
@@ -256,7 +388,7 @@ async function tokensToETH(tokenAmount) {
 
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
 
-  const inputValue = getToken.value;
+  //const inputValue = tokenAmount;
   let ethToUSDTDecimalPoints = await readGameContract.ethToUSDTDecimalPoints();
 
 
@@ -266,42 +398,46 @@ async function tokensToETH(tokenAmount) {
 
   //let ETH=(((inputValue * (stage.priceInUSDT))/ oneEther) * (10**ethToUSDTDecimalPoints))/currentETHPrice;
   //const eth = (inputValue * stage.priceInUSDT *(10 ** ethToUSDTDecimalPoints)) / (currentETHPrice * oneEther);
-  let ETH = (inputValue * stage.priceInUSDT) / ((currentETHPrice / (10 ** ethToUSDTDecimalPoints)) * oneEther);
+  let ETH = (tokenAmount * stage.priceInUSDT) / ((currentETHPrice / (10 ** ethToUSDTDecimalPoints)) * oneEther);
   console.log(ETH)
-  return ETH*oneEther;
+  return ETH;
 }
 
-async function buyTokensWithStableCoin(){
+async function buyTokensWithStableCoin(inputValue){
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
   const stage = await readGameContract.stages(CurrentStageIndex);
-  let amountInUSDT = userInput.value;
-  let tokensToPurchase = (amountInUSDT * oneEther) / (stage.priceInUSDT);
-  return tokensToPurchase/oneEther;
+  //let amountInUSDT = userInput.value;
+  let tokensToPurchase = (inputValue * oneEther) / (stage.priceInUSDT);
+  return tokensToPurchase;
 }
 
-async function tokentoStableCoin(){
+async function tokentoStableCoin(tokenAmount){
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
   const stage = await readGameContract.stages(CurrentStageIndex);
-  let amountInToken = getToken.value;
-  let amountInUSDT = (amountInToken * (stage.priceInUSDT))/oneEther;
-  return amountInUSDT*oneEther;
+  //let amountInToken = tokenAmount;
+  let amountInUSDT = (tokenAmount * (stage.priceInUSDT))/oneEther;
+  return amountInUSDT;
 }
+
 
 getToken.addEventListener('input',async function(){
+  let tokenAmount = getToken.value;
   if(tokenType == "ETH" && (userInput.value!=null)){
     //const inputValue = userInput.value;
-    let result = await tokensToETH();
+    let result = await tokensToETH(tokenAmount);
     //console.log(result)
     userInput.value = result;
   } else if(tokenType == "USDT" && (userInput.value!=null)){
     //const inputValue = userInput.value;
-    let result = await tokentoStableCoin();
+    let result = await tokentoStableCoin(tokenAmount);
     console.log(result)
     //console.log(result)
     userInput.value = result;
+  } else{
+    let result = await tokentoStableCoin(tokenAmount);
+    //console.log(result)
+    userInput.value = result/bnbPrice;
   }
-
-
 })
 
 
@@ -311,16 +447,22 @@ userInput.addEventListener('input',async function(){
 })
 
 async function updateBuyToken(){
+  let inputValue = userInput.value;
   if(tokenType == "ETH" && (userInput.value!=null)){
     //const inputValue = userInput.value;
-    let result = await buyTokenwithETH();
+    let result = await buyTokenwithETH(inputValue);
     //console.log(result)
     getToken.value = result;
   } else if(tokenType == "USDT" && (userInput.value!=null)){
     //const inputValue = userInput.value;
-    let result = await buyTokensWithStableCoin();
+    let result = await buyTokensWithStableCoin(inputValue);
     //console.log(result)
     getToken.value = result;
+  } else{
+    //BNB
+    let result = await buyTokensWithStableCoin(inputValue);
+    //console.log(result)
+    getToken.value = result*bnbPrice;
   }
 } 
 async function getLatestSoldInfo(){
@@ -332,40 +474,156 @@ async function adjustBarWidth(){
   //let totalToken = totalSupply/oneEther;
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
   let goalToken = tokenSaleTargets[CurrentStageIndex];
-  remainAmount.textContent  = "$ "+soldToken.toFixed(2).toLocaleString(undefined, { minimumFractionDigits: 2 });
+  remainAmount.textContent  = "$ "+soldToken.toLocaleString(undefined, { minimumFractionDigits: 2 });
   const percentage = ((soldToken /goalToken) * 100).toLocaleString(undefined, { minimumFractionDigits: 2 });
 
   let pbarwidth = parentBar.offsetWidth;
   let cbarwidth = remainBar.offsetWidth;
   const computedStyle = window.getComputedStyle(remainBar);
   const marginRight = parseFloat(computedStyle.getPropertyValue('margin-right'));
-  console.log(pbarwidth)
-  console.log(cbarwidth)
-  console.log(marginRight)
+  // console.log(pbarwidth)
+  // console.log(cbarwidth)
+  // console.log(marginRight)
   remainBar.style.width = (((percentage/100)*pbarwidth)-marginRight*2)+"px";
-  console.log(remainBar.offsetWidth)
+  //console.log(remainBar.offsetWidth)
 }
 
 initPage();
 async function initPage(){
+  checkNetwork();
   //get the data from smart contract
+  
   let soldToken = (await readGameContract.totalTokensSoldGlobal())/oneEther;
   //let totalToken = totalSupply/oneEther;
   let CurrentStageIndex = await readGameContract.findCurrentStageIndex();
   let goalToken = tokenSaleTargets[CurrentStageIndex];
   console.log(soldToken)
   console.log(goalToken)
-  remainAmount.textContent  = "$"+soldToken.toFixed(2).toLocaleString(undefined, { minimumFractionDigits: 2 });
+  //remainAmount.textContent  = "$"+soldToken.toLocaleString(undefined, { minimumFractionDigits: 1 });
   const percentage = ((soldToken /goalToken) * 100).toLocaleString(undefined, { minimumFractionDigits: 2 });
  
   adjustBarWidth();
-
+  updateRoyaltoToken();
   remainPersent.textContent = percentage + "% of minimum goal raise";
   totalsupply.textContent = "$"+goalToken.toLocaleString(undefined, { minimumFractionDigits: 1 });
-
-
+  bnbPrice = await getBNBPrice();
+  console.log("BNB ptice to usd: " + bnbPrice);
 
 }
+
+function checkNetwork(){
+  // Check if MetaMask is installed and enabled
+  if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
+      //get current chain id
+      ethereum.request({ method: 'eth_chainId' })
+      .then(chainId => {
+          // Check if the network is the maal testnet or other
+          console.log("this is "+chainId)
+          if (chainId !== '0xaa36a7') { //choose the chain ID want to connect
+              // Prompt the user to switch networks
+              if (confirm('Please switch to the Maal testnet to continue.')) {
+                SwitchChainToSepolia();
+              } else {
+                  alert("You need to switch to Maal testnet to contunue.")  
+              }
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  } else {
+      // MetaMask is not installed or not enabled
+      alert('Please install MetaMask to use this feature.');
+  }
+}
+//if not maal test net then switch to maal test net
+async function SwitchChainToSepolia(){
+  try {
+      //switch the netword to maal testnet network
+      await ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0xaa36a7' }],
+      });
+      //after change refresh the page
+      location.reload();
+  } catch (switchError) {
+    if (switchError.code === 4902) { // 4902 mean the network not at wallet
+      //request to add the chain to wallet here
+      if(confirm("Maal testnet Chain hasn't been added to the wallet! Do you want to add it now?")){
+          addSepoliaTestNetwork();
+      }
+    }
+  }
+}
+//if no in wallet, add network to wallet
+async function addSepoliaTestNetwork() {
+  try {
+      //add maal testnet network to user wallet
+      const result = await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+          chainId: "0xaa36a7",
+          rpcUrls: ["https://ethereum-sepolia-rpc.publicnode.com"],
+          chainName: "Sepolia",
+          nativeCurrency: {
+              name: "ETH",
+              symbol: "ETH",
+              decimals: 18
+          },
+          blockExplorerUrls: ["https://sepolia.etherscan.io/"]
+          }]
+      });
+      alert("Add network successfully")
+      location.reload();
+  } catch (error){
+      alert("Something wrong " + error)
+  }
+}  
+//use api get the bnb price 
+
+// var liveprice = {
+//   "async": true,
+//   "scroosDomain": true,
+//   "url": "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd",
+
+//   "method": "GET",
+//   "headers": {}
+// }
+
+// $.ajax(liveprice).done(function (response){
+//   console.log(response)
+// });
+
+// async function getBNBPrice(){
+//   const options = {method: 'GET'};
+//   let price;
+//   fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd', options)
+//     .then(response => response.json())
+//     .then(response => {
+//       console.log(response)
+//       price = response.binancecoin.usd;
+//       console.log("price: " + price);
+//       return price;
+//     })
+//     .catch(err => console.error(err));
+
+// }
+
+async function getBNBPrice() {
+  const options = { method: 'GET' };
+
+  try {
+    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd', options);
+    const data = await response.json();
+    const price = data.binancecoin.usd;
+    //console.log("price: " + price);
+    return price;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 
 
 

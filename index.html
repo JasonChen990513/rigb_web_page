@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
   type="application/javascript"></script> 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <style>
     .autoAdjust{
         font-size: clamp(12px, 4vw, 64px);
@@ -45,14 +46,31 @@
         flex-direction: column;
     }
 
-    .faqContent{
-        animation-duration: 0.3s;
+    #navBar {
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
     }
 
-    .faqContent.show{
-        display:block; 
+    /* #navBar.show {
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    } */
+    .section {
+        overflow:hidden;
+        transition:height 0.3s ease-out;
+        height:auto;
     }
+
+    /* .faqContent{
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    } */
+
+    /* .faqContent.show{
+        display:block; 
+    } */
+
+    
 
     @keyframes menuShow{
         0%{
@@ -65,6 +83,15 @@
         }
     }
 
+    @keyframes menuShowbg{
+        0%{
+            background-color: transparent;
+        }
+        100%{
+            background-color: white;
+        }
+    }
+
     @keyframes menuHide{
         0%{
             opacity: 1;
@@ -73,6 +100,15 @@
         100%{
             opacity: 0;
             height: 0px;
+        }
+    }
+
+    @keyframes menuHidebg{
+        0%{
+            background-color: white;
+        }
+        100%{
+            background-color: transparent;
         }
     }
 
@@ -205,11 +241,11 @@
 
 
                 <div class="mx-4 bg-bluebtn rounded-2xl pt-7 p-4">
-                    <samp id="inputType" class="text-white">Amount in USDT you</samp>
+                    <samp id="inputType" class="text-white">Amount in ETH you</samp>
                     <div class="flex bg-white rounded w-full">
                         <input id="payToken" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" type="number">
                     </div>
-                    <samp id="inputType" class="text-white">Amount in $SCORP you receive </samp>
+                    <samp id="" class="text-white">Amount in $SCORP you receive </samp>
                     <div class="flex bg-white rounded w-full">
                         <input id="getToken" class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none" type="number">
                     </div>
@@ -528,7 +564,7 @@
         <div class="w-[1080px]">
             <div class="text-white font-bold text-center text-5xl ">FAQs</div>
             <div class="mt-10 border-t-[1px] faqsBtn cursor-pointer">
-                <div class=" flex justify-between items-center">
+                <div class=" flex justify-between items-center mt-3">
                     <div class="text-white font-bold text-2xl py-5">What is a Pre-Sale?</div>
                     <div class="px-4  text-white showContent">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -541,10 +577,10 @@
                           </svg>                          
                     </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent opacity-0 hidden">The Royal Euro (REUR) stablecoin, Euro cash reserves at a 1:1 ratio, achieving 100% cash collateralization verifiable on-chain in real-time, REUR operates under a full segregation of assets framework, managed through Verified Reserve Fund Deployment (VRFD) overseen by international tier one banks. This stablecoin will serve as the foundational collateral for the creation of two additional stablecoins – the Royal Dollar (ROYAL) and the Royal Gold (RXAU) Stablecoin.</div>
+                <div class="text-white sm:text-lg faqContent opacity-1 section mb-3">The Royal Euro (REUR) stablecoin, Euro cash reserves at a 1:1 ratio, achieving 100% cash collateralization verifiable on-chain in real-time, REUR operates under a full segregation of assets framework, managed through Verified Reserve Fund Deployment (VRFD) overseen by international tier one banks. This stablecoin will serve as the foundational collateral for the creation of two additional stablecoins – the Royal Dollar (ROYAL) and the Royal Gold (RXAU) Stablecoin.</div>
             </div>
-            <div class="border-t-[1px] faqsBtn cursor-pointer">
-                <div class=" flex justify-between items-center ">
+            <div class="border-t-[1px] faqsBtn cursor-pointer ">
+                <div class=" flex justify-between items-center mt-3">
                     <div class="text-white font-bold text-2xl py-5">What is ROYAL?</div>
                     <div class="px-4  text-white showContent">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -557,10 +593,10 @@
                           </svg>                          
                     </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent opacity-0 hidden">The Royal Dollar is a stablecoin bound to the USD, using Royal Euro stablecoins (REUR) as collateral. REUR is fully backed by 100% Euro cash deposited by the Royal Investment Bank Group in top-tier 1 international banks, establishing bank-grade security and stability.</div>
+                <div class="text-white sm:text-lg faqContent opacity-1 section mb-3">The Royal Dollar is a stablecoin bound to the USD, using Royal Euro stablecoins (REUR) as collateral. REUR is fully backed by 100% Euro cash deposited by the Royal Investment Bank Group in top-tier 1 international banks, establishing bank-grade security and stability.</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
-                <div class=" flex justify-between items-center">
+                <div class=" flex justify-between items-center mt-3">
                     <div class="text-white font-bold text-2xl py-5">What is RXAU?</div>
                     <div class="px-4  text-white showContent">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -573,10 +609,10 @@
                           </svg>                          
                     </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent opacity-0 hidden">Royal Gold is a stablecoin backed by REUR collateral and pegged to the international market Euro price of one troy ounce gold.</div>
+                <div class="text-white sm:text-lg faqContent opacity-1 section mb-3">Royal Gold is a stablecoin backed by REUR collateral and pegged to the international market Euro price of one troy ounce gold.</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
-                <div class=" flex justify-between items-center">
+                <div class=" flex justify-between items-center mt-3">
                     <div class="text-white font-bold text-2xl py-5">What is RIBG?</div>
                     <div class="px-4  text-white showContent">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -589,10 +625,10 @@
                           </svg>                          
                     </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent opacity-0 hidden">RIBG, a leading financial institution, specializes in traditional finance and emerging digital assets markets.With a focus on regulatory compliance and technological innovation, we offer integrated investment banking services, develop stable coin technology, facilitate remittance activities and digital asset trading</div>
+                <div class="text-white sm:text-lg faqContent opacity-1 section mb-3">RIBG, a leading financial institution, specializes in traditional finance and emerging digital assets markets.With a focus on regulatory compliance and technological innovation, we offer integrated investment banking services, develop stable coin technology, facilitate remittance activities and digital asset trading</div>
             </div>
             <div class="border-t-[1px] faqsBtn cursor-pointer">
-                <div class=" flex justify-between items-center">
+                <div class=" flex justify-between items-center mt-3">
                     <div class="text-white font-bold text-2xl py-5">How do RIB stablecoin Work?</div>
                     <div class="px-4  text-white showContent">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -605,7 +641,7 @@
                           </svg>                          
                     </div>
                 </div>
-                <div class="text-white sm:text-lg faqContent opacity-0 hidden">REUR is a stablecoin backed by 100% Euro cash reserves and managed through smart contracts on DLT. It provides transparency, compliance, and security and operates under a full segregation of assets framework. The technology execution of REUR includes Multi-Party Computation (MPC), independent minters, and specialized protocols to ensure compliance. It is accessible to counter-parties onboarded through rigorous compliance procedures, ensuring adherence to regulatory standards. The stablecoin is distributed through on-chain registration and off-chain compliance mechanisms and facilitates liquidity through liquidity providers.</div>
+                <div class="text-white sm:text-lg faqContent opacity-1 section mb-3">REUR is a stablecoin backed by 100% Euro cash reserves and managed through smart contracts on DLT. It provides transparency, compliance, and security and operates under a full segregation of assets framework. The technology execution of REUR includes Multi-Party Computation (MPC), independent minters, and specialized protocols to ensure compliance. It is accessible to counter-parties onboarded through rigorous compliance procedures, ensuring adherence to regulatory standards. The stablecoin is distributed through on-chain registration and off-chain compliance mechanisms and facilitates liquidity through liquidity providers.</div>
             </div>
             <div class="border-t-[1px] flex justify-start items-center pt-5">
                 <bottom class="border-2 rounded-full text-2xl bg-bluebtn text-white px-5 py-2 cursor-pointer transition hover:text-bluebtn hover:bg-white ease-in duration-300">Read all FAQs</bottom>
