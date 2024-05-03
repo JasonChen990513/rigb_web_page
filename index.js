@@ -517,14 +517,14 @@ function checkNetwork(){
       //get current chain id
       ethereum.request({ method: 'eth_chainId' })
       .then(chainId => {
-          // Check if the network is the maal testnet or other
+          // Check if the network is the Sepolia testnet or other
           console.log("this is "+chainId)
           if (chainId !== '0xaa36a7') { //choose the chain ID want to connect
               // Prompt the user to switch networks
-              if (confirm('Please switch to the Maal testnet to continue.')) {
+              if (confirm('Please switch to the Sepolia testnet to continue.')) {
                 SwitchChainToSepolia();
               } else {
-                  alert("You need to switch to Maal testnet to contunue.")  
+                  alert("You need to switch to Sepolia testnet to contunue.")  
               }
           }
       })
@@ -536,10 +536,10 @@ function checkNetwork(){
       alert('Please install MetaMask to use this feature.');
   }
 }
-//if not maal test net then switch to maal test net
+//if not Sepolia test net then switch to Sepolia test net
 async function SwitchChainToSepolia(){
   try {
-      //switch the netword to maal testnet network
+      //switch the netword to Sepolia testnet network
       await ethereum.request({
           method: 'wallet_switchEthereumChain',
           params: [{ chainId: '0xaa36a7' }],
@@ -549,7 +549,7 @@ async function SwitchChainToSepolia(){
   } catch (switchError) {
     if (switchError.code === 4902) { // 4902 mean the network not at wallet
       //request to add the chain to wallet here
-      if(confirm("Maal testnet Chain hasn't been added to the wallet! Do you want to add it now?")){
+      if(confirm("Sepolia testnet Chain hasn't been added to the wallet! Do you want to add it now?")){
           addSepoliaTestNetwork();
       }
     }
@@ -558,7 +558,7 @@ async function SwitchChainToSepolia(){
 //if no in wallet, add network to wallet
 async function addSepoliaTestNetwork() {
   try {
-      //add maal testnet network to user wallet
+      //add Sepolia testnet network to user wallet
       const result = await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [{
